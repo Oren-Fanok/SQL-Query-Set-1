@@ -1,1 +1,0 @@
-# SQL-Query-Set-1
