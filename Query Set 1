@@ -1,4 +1,5 @@
---Query 1 done
+--Query 1
+
 DROP TABLE if EXISTS owner_year_month1;
 CREATE TEMPORARY TABLE owner_year_month1 AS
 SELECT card_no,
@@ -10,7 +11,7 @@ FROM owner_spend_date
 GROUP BY card_no,year,month
 
 
---Query 2 Revised
+--Query 2
 
 SELECT year, month, sum(spend) as total_spend
 FROM owner_year_month1
@@ -18,7 +19,7 @@ GROUP BY year,month
 ORDER BY total_spend DESC
 LIMIT 5
 
---Query 3 Revised
+--Query 3
 
 SELECT  
 Round(avg(owner_year_month1.spend),2) as avg_monthly_spend,
@@ -31,7 +32,7 @@ GROUP BY owner_year_month1.month
 ORDER BY month
 
 
---Query 4 done
+--Query 4
 
 SELECT 
 sum(owner_year_month1.spend) as ' total spend',
@@ -42,7 +43,8 @@ GROUP BY owners.zip
 ORDER BY sum(owner_year_month1.spend) DESC
 Limit 3
 
---Query 5 Revised
+--Query 5
+
 With cte_55408 as(
 SELECT  
 Round(avg(owner_year_month1.spend),2) as avg_monthly_spend_55408,
@@ -82,9 +84,7 @@ ORDER BY owner_year_month1.month
 
 
 
---Query 6 Revised
-
-
+--Query 6
 
 CREATE TEMPORARY TABLE owner_year_month AS
 WITH cte_total_sales AS
@@ -115,7 +115,7 @@ FROM owner_year_month
 
 DROP TABLE if EXISTS owner_year_month;
 
---Query 7 Done
+--Query 7
 
 DROP VIEW IF  EXISTS vw_owner_recent;
 
@@ -137,7 +137,7 @@ WHERE 5 < total_trans AND
  SUBSTR(last_visit,1,4) IN ('2016','2017')
  
  
---Query 8 done 
+--Query 8
 DROP TABLE if EXISTS owner_recent;
 
 CREATE TEMPORARY TABLE owner_recent AS
@@ -168,7 +168,7 @@ WHERE card_no = "18736";
 -- q.1 The temp table query performs our command much faster than the view command.
 -- q.2 The temp table is faster as the results are stored in a temp table for the entirety of our working session, views have to re run each time they are called.
 
--- Query 9 Revised
+-- Query 9
 
 SELECT 
 or1.card_no,
@@ -190,7 +190,7 @@ select *
 from owner_recent
 WHERE number_of_dates_shopped > 100
 
--- Query 10 Revised
+-- Query 10
 
 SELECT 
 or1.card_no,
